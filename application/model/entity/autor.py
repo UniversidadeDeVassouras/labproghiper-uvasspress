@@ -5,3 +5,6 @@ class Autor:
         self._login = login
         self._senha = senha
         self._email = email
+
+    def get_email(self):
+        return self._email
