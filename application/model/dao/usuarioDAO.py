@@ -19,7 +19,7 @@ class UsuarioDAO:
 
     def logar_usuario(self, email, senha):
         for autor in self._users:
-            if autor.get_email() != email and autor.get_password() != senha:
+            if autor.get_email() == email and autor.get_password() == senha:
                 return False
         return True
 
