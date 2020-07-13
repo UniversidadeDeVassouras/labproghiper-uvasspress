@@ -1,6 +1,5 @@
 class Blog:
-    def __init__(self, id, titulo, autor, categoria):
-        self._id = id
+    def __init__(self, titulo, autor, categoria):
         self._titulo = titulo
         self._autor = autor
         self._categoria = categoria

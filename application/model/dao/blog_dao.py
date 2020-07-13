@@ -2,7 +2,10 @@ from application.model.entity.blog import Blog
 
 class BlogDAO():
     def __init__(self):
-        blog1 = Blog(1, "blog", "autor", "categoria")
+        pass
+
+    def criar_blog(self, titulo, autor, categoria):
+        return Blog(titulo, autor, categoria)
 
     def adicionar_post(self, blog, post):
         blog.get_lista_posts().append(post) 

@@ -1,0 +1,12 @@
+<form enctype="multipart/form-data" action="{{url_for('criar_blog')}}" method="POST">
+    
+    <div class="form-group">
+        <label for="inputNome">Titulo: </label>
+        <input type="text" class="form-control" id="inputNome" name="titulo">
+        <label for="inputNome">Autor: </label>
+        <input type="text" class="form-control" id="inputNome" name="autor">
+        <label for="inputNome">Categoria: </label>
+        <input type="text" class="form-control" id="inputNome" name="categoria">
+    </div>
+    <button type="submit" class="btn btn-green">Criar Blog</button>
+</form>
