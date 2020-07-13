@@ -9,6 +9,7 @@ def logado():
     email = request.form['login-email']
     senha = request.form['login-password']
     logar_usuario = usuario.logar_usuario(email,senha)
+    autor_list = usuario.exibir()
     if  logar_usuario == True:
         return render_template("logado.html")
     else: 
@@ -20,7 +21,9 @@ def cadastro ():
     email = request.form['signup-email']
     senha = request.form['signup-password']
     confirmar_senha = request.form['signup-password-confirm']
-    cadastrar_usuario = usuario.cadastrar_usuario(email, senha, confirmar_senha)
+    nome = request.form['signup-nome']
+    nome_usuario = request.form['signup-user-name']
+    cadastrar_usuario = usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha)
     return render_template('login.html', cadastrar_usuario = cadastrar_usuario)
 
 @app.route('/login')

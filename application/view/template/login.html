@@ -1,4 +1,3 @@
-{{cadastrar_usuario}}
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -29,7 +28,7 @@
         </button>
                 <form class="form form-login" action="{{url_for('logado')}}" method="POST">
                     <fieldset>
-                        <legend>Please, enter your email and password for login.</legend>
+                        <legend>Porfavor, entre com seu email e senha .</legend>
                         <div class="input-block">
                             <label for="login-email">E-mail</label>
                             <input name="login-email" id="login-email" type="email" required>
@@ -44,12 +43,20 @@
             </div>
             <div class="form-wrapper">
                 <button type="button" class="switcher switcher-signup">
-          Sign Up
+          Cadastro
           <span class="underline"></span>
         </button>
                 <form class="form form-signup" action="{{url_for('cadastro')}}" method="POST">
                     <fieldset>
-                        <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                        <legend>Porfavor, digite seu nome, email, senha e confirmação de senha para cadastrar</legend>
+                        <div class="input-block">
+                            <label for="signup-nome">Nome</label>
+                            <input name="signup-nome" id="signup-nome" type="text" required>
+                        </div>
+                        <div class="input-block">
+                            <label for="signup-user-name">Nome de usuário</label>
+                            <input name="signup-user-name" id="signup-user-name" type="text" required>
+                        </div>
                         <div class="input-block">
                             <label for="signup-email">E-mail</label>
                             <input name="signup-email" id="signup-email" type="email" required>
@@ -67,12 +74,27 @@
                 </form>
             </div>
         </div>
+        <div id = "cadastro-efetuado">
+            {{cadastrar_usuario}}
+        </div>
     </section>
-
-
-
-
     <script src="{{url_for('static', filename = 'js/login.js')}}"></script>
+
+    <script>
+        function submitForm(formElement){
+            var formData = new FormData(formElement);
+            var xhr = new XMLHttpRequest();
+            xhr.open(formElement.method, formElement.action);
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                        document.getElementById('cadastro-efetuado').innerHTML = xhr.response;
+                };
+            };
+            xhr.send(formData);
+            return false;
+        }
+    </script>
+
 </body>
 
 </html>
