@@ -1,8 +1,8 @@
 class Blog:
-    def __init__(self, titulo, autor, categoria):
-        self._titulo = titulo
+    def __init__(self, id, nome, autor):
+        self._nome = nome
+        self._id = id
         self._autor = autor
-        self._categoria = categoria
         self._lista_posts = []
         self._lista_seguidores = []
 
@@ -12,20 +12,17 @@ class Blog:
     def set_id(self, id):
         self._id = id
     
-    def get_titulo(self):
-        return self._titulo
-        
-    def set_titulo(self, titulo):
-        self._titulo = titulo
+    def get_nome(self):
+        return self._nome
 
     def get_autor(self):
         return self._autor
-    
-    def get_categoria(self):
-        return self._categoria
-    
-    def set_categoria(self, categoria):
-        self._categoria = categoria    
+
+    def set_autor(self, autor):
+        self._autor = autor
+        
+    def set_nome(self, nome):
+        self._nome = nome  
         
     def get_lista_posts(self):
         return self._listaPosts

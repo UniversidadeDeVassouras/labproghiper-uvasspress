@@ -4,8 +4,8 @@ class BlogDAO():
     def __init__(self):
         pass
 
-    def criar_blog(self, titulo, autor, categoria):
-        return Blog(titulo, autor, categoria)
+    def criar_blog(self, nome, autor):
+        return Blog(nome, autor)
 
     def adicionar_post(self, blog, post):
         blog.get_lista_posts().append(post) 
