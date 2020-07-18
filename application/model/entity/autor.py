@@ -3,14 +3,12 @@ class Autor:
         self._nome = nome
         self._nome_usuario = nome_usuario
         self._email = email
-<<<<<<< HEAD
         self._senha = senha
-        
 
-    def set_id (self, id):
+    def set_id(self, id):
         self._id = id
 
-    def get_id (self):
+    def get_id(self):
         return self._id
 
     def get_nome(self):
@@ -19,13 +17,11 @@ class Autor:
     def get_nome_usuario(self):
         return self._nome_usuario
 
-    def get_email (self):
+    def get_email(self):
         return self._email
 
-    def get_password (self):
+    def get_password(self):
         return self._senha
-=======
 
     def get_email(self):
         return self._email
->>>>>>> req002
