@@ -3,6 +3,7 @@ class Autor:
         self._nome = nome
         self._nome_usuario = nome_usuario
         self._email = email
+<<<<<<< HEAD
         self._senha = senha
         
 
@@ -23,3 +24,8 @@ class Autor:
 
     def get_password (self):
         return self._senha
+=======
+
+    def get_email(self):
+        return self._email
+>>>>>>> req002
