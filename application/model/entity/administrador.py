@@ -1,4 +1,4 @@
-class Autor:
+class Administrador:
     def __init__(self, nome, nome_usuario, email, senha):
         self._nome = nome
         self._nome_usuario = nome_usuario

@@ -19,16 +19,18 @@
 
     <section class="forms-section">
         <h1 class="section-title">Tela de Login</h1>
+
+        {% if check_user %}
         <div class="forms">
 
-            <div class="form-wrapper is-active">
+            <div class="form-wrapper {% if check_user %} is-active {%endif%}" id="form-wrapper1">
                 <button type="button" class="switcher switcher-login">
           Login
           <span class="underline"></span>
         </button>
                 <form class="form form-login" action="{{url_for('logado')}}" method="POST">
                     <fieldset>
-                        <legend>Porfavor, entre com seu email e senha .</legend>
+                        <legend>Por favor, entre com seu email e senha .</legend>
                         <div class="input-block">
                             <label for="login-email">E-mail</label>
                             <input name="login-email" id="login-email" type="email" required>
@@ -41,7 +43,12 @@
                     <button type="submit" class="btn-login">Login</button>
                 </form>
             </div>
-            <div class="form-wrapper">
+            {%endif%}
+
+            <!-- form 2-->
+            {% if not check_user %}
+
+            <div class="form-wrapper {%if not check_user %} is-active {%endif%}" id="form-wrapper2">
                 <button type="button" class="switcher switcher-signup">
           Cadastro
           <span class="underline"></span>
@@ -73,27 +80,31 @@
                     <button type="submit" class="btn-signup">Continue</button>
                 </form>
             </div>
+            {% endif %}
+            <!-- end form 2 -->
         </div>
-        <div id = "cadastro-efetuado">
+        <div id="cadastro-efetuado">
             {{cadastrar_usuario}}
         </div>
     </section>
     <script src="{{url_for('static', filename = 'js/login.js')}}"></script>
 
+    <!--
     <script>
-        function submitForm(formElement){
+        function submitForm(formElement) {
             var formData = new FormData(formElement);
             var xhr = new XMLHttpRequest();
             xhr.open(formElement.method, formElement.action);
             xhr.onreadystatechange = function() {
-                if(xhr.readyState == 4 && xhr.status == 200) {
-                        document.getElementById('cadastro-efetuado').innerHTML = xhr.response;
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                     document.getElementById('cadastro-efetuado').innerHTML = xhr.response;
                 };
             };
             xhr.send(formData);
             return false;
         }
     </script>
+    -->
 
 </body>
 

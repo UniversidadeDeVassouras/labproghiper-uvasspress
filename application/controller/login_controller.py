@@ -28,4 +28,6 @@ def cadastro ():
 
 @app.route('/login')
 def login_user():
-    return render_template('login.html')
+    usuario = current_app.config ['usuario_dao']
+    check_user = usuario.exibir()
+    return render_template('login.html', check_user = check_user)
