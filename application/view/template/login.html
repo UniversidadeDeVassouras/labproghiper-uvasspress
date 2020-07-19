@@ -53,7 +53,7 @@
           Cadastro
           <span class="underline"></span>
         </button>
-                <form class="form form-signup" action="{{url_for('cadastro')}}" method="POST">
+                <form class="form form-signup" action="{{url_for('cadastro')}}" method="POST" method="POST" onsubmit="return submitForm(this);">
                     <fieldset>
                         <legend>Porfavor, digite seu nome, email, senha e confirmação de senha para cadastrar</legend>
                         <div class="input-block">
@@ -84,12 +84,11 @@
             <!-- end form 2 -->
         </div>
         <div id="cadastro-efetuado">
-            {{cadastrar_usuario}}
+            
         </div>
     </section>
     <script src="{{url_for('static', filename = 'js/login.js')}}"></script>
 
-    <!--
     <script>
         function submitForm(formElement) {
             var formData = new FormData(formElement);
@@ -104,7 +103,7 @@
             return false;
         }
     </script>
-    -->
+
 
 </body>
 

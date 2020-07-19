@@ -24,7 +24,7 @@ def cadastro ():
     nome = request.form['signup-nome']
     nome_usuario = request.form['signup-user-name']
     cadastrar_usuario = usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha)
-    return render_template('login.html', cadastrar_usuario = cadastrar_usuario)
+    return render_template('mensagem.html', cadastrar_usuario = cadastrar_usuario)
 
 @app.route('/login')
 def login_user():
