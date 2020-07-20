@@ -12,8 +12,9 @@ def logado():
     autor_list = usuario.exibir()
     if  logar_usuario == True:
         return render_template("logado.html")
-    else: 
-        return render_template('login.html')
+    else:
+        mensagem_erro = "Email ou senha incorretos"
+        return render_template('login-1.html',mensagem_erro = mensagem_erro)
 
 @app.route ('/login/cadastro', methods = ['POST'])
 def cadastro ():
@@ -34,4 +35,4 @@ def login_user():
     if not check_user:
         return render_template('cadastro.html')
     else:
-        return render_template('login.html', check_user = check_user)
+        return render_template('login-1.html', check_user = check_user)
