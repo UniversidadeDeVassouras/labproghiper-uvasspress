@@ -30,4 +30,8 @@ def cadastro ():
 def login_user():
     usuario = current_app.config ['usuario_dao']
     check_user = usuario.exibir()
-    return render_template('login.html', check_user = check_user)
+
+    if not check_user:
+        return render_template('cadastro.html')
+    else:
+        return render_template('login.html', check_user = check_user)
