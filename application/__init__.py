@@ -13,6 +13,7 @@ from application.controller import alteracaoSenha_controller
 from application.controller import recuperacaoSenha_controller
 from application.controller import login_controller
 from application.controller import a_controller
+from application.controller import blog_controller
 from application.controller import feed_controller
 
 usuario_dao = UsuarioDAO()
