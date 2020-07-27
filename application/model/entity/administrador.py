@@ -7,6 +7,9 @@ class Administrador:
 
     def set_id(self, id):
         self._id = id
+        
+    def set_blog(self, blog):
+        self._blog = blog
 
     def get_id(self):
         return self._id

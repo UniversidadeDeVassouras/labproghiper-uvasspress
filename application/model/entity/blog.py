@@ -1,8 +1,7 @@
 class Blog:
-    def __init__(self, id, nome, autor):
+    def __init__(self, id, nome):
         self._nome = nome
         self._id = id
-        self._autor = autor
         self._lista_posts = []
         self._lista_seguidores = []
 
