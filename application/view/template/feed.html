@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Feed</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.min.css')}}">
+</head>
+
+<body>
+    <div class="mx-auto" style="width: 500px;">
+        <ul class="list-group">
+            <div class="text-center">
+                <li class="list-group-item">
+                    <h4>Feed de Postagens</h4>
+                </li>
+            </div>
+            <li class="list-group-item">
+                <form>
+                    <div class="form-group">
+                        <label for="user-title">Título</label>
+                        <input type="password" class="form-control" id="user-title" placeholder="Digite o título...">
+                        <label for="user-text">Texto</label>
+                        <input type="password" class="form-control" id="user-text" placeholder="Digite o texto...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div class="mx-auto" style="width: 500px;">
+        <ul class="list-group">
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Titulo</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam turpis tellus,
+                        euismod quis tincidunt aliquam, congue in sapien. Mauris cursus congue dictum. Mauris fermentum
+                        metus massa, quis tincidunt arcu accumsan et. Aliquam magna quam, hendrerit sit amet elit
+                        ultricies, ullamcorper ullamcorper ligula. Pellentesque at vestibulum mi. Sed malesuada tellus
+                        tempor vulputate faucibus. Donec ut mollis urna. Maecenas convallis sagittis justo, at hendrerit
+                        ante facilisis eget. Vivamus non orci in ipsum laoreet convallis. Fusce vulputate nunc in sem
+                        lobortis congue. Phasellus lacinia mauris at egestas accumsan. Praesent elementum, ligula eget
+                        cursus imperdiet, quam arcu blandit metus, tempor porttitor metus risus vitae neque. Morbi
+                        tellus est, pretium sed tempor et, dictum vitae risus. Quisque vel consectetur nisl.</p>
+                </div>
+        </ul>
+    </div>
+
+
+    <script src="{{url_for('static', filename = 'js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+</body>
+
+</html>

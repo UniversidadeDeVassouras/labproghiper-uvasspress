@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<body>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <title>
+            Login
+        </title>
+
+    </head>
+    <div class="container" style="padding-top: 100px;">
+        <div id="login" class="signin-card">
+            <div id="cadastrado">
+            </div>
+            <div class="logo-image">
+                <img src="../static/image/logo-projeto.png" alt="Logo" title="Logo" width="138">
+            </div>
+            <div id="info-cadastro" style="background-color: blueviolet; color: white; text-align: center; margin: 20, 20, 20, 20;"></div>
+            <h1 class="display1">Cadastro</h1>
+            <form role="form" action="{{url_for('cadastro')}}" method="POST" onsubmit="return submitForm(this);">
+                <div id="form-login-username" class="form-group">
+                    <input class="form-control" name="signup-nome" id="signup-nome" type="text" size="18" alt="Nome" required/>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label for="username" class="float-label">Nome</label>
+                </div>
+                <div id="form-login-username" class="form-group">
+                    <input class="form-control" name="signup-user-name" id="signup-user-name" type="text" size="18" alt="Usuario" required/>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label for="username" class="float-label">Usuario</label>
+                </div>
+                <div id="form-login-username" class="form-group">
+                    <input class="form-control" name="signup-email" id="signup-email" type="text" size="18" alt="E-mail" required/>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label for="username" class="float-label">E-mail</label>
+                </div>
+                <div id="form-login-password" class="form-group">
+                    <input class="form-control" name="signup-password" id="signup-password" type="password" size="18" alt="senha" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label for="password" class="float-label">Senha</label>
+                </div>
+                <div id="form-login-password" class="form-group">
+                    <input class="form-control" name="signup-password-confirm" id="signup-password-confirm" type="password" size="18" alt="Confirmar Senha" required>
+                    <span class="form-highlight"></span>
+                    <span class="form-bar"></span>
+                    <label for="password" class="float-label">Confirmar Senha</label>
+                </div>
+                <div>
+                    <button class="btn btn-block btn-info ripple-effect" id="cadastrou" type="submit" name="Submit" alt="sign in">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        function submitForm(formElement) {
+            var formData = new FormData(formElement);
+            var xhr = new XMLHttpRequest();
+            xhr.open(formElement.method, formElement.action);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    document.getElementById('info-cadastro').innerHTML = xhr.response;
+                    document.getElementById('cadastrado').innerHTML = `<a href="{{url_for('login_user')}}"><button class = "btn btn-block btn-info ripple-effect"
+                    type = "submit"
+                    name = "Submit"
+                    alt = "sign in"
+                    style = "max-width: 120px;" > Ir para Login </button></a>`
+                };
+            };
+            xhr.send(formData);
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>
