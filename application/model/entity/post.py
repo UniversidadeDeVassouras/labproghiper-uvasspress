@@ -11,6 +11,8 @@ class Post:
         self._qtd_curtida = 0
         self._autor = autor
         self._id_autor = id_autor
+        self._comentarios_pendentes = []
+        self._comentarios_autorizados = []
 
     def get_qtd_curtidas(self):
         return self._qtd_curtida
@@ -59,3 +61,15 @@ class Post:
 
     def get_id_autor(self):
         return self._id_autor
+
+    def get_comentarios_pendentes(self):
+        return self._comentarios_pendentes
+
+    def get_comentarios_autorizados(self):
+        return self._comentarios_autorizados
+
+    def add_comentarios_pendentes(self, comentario):
+        self._comentarios_pendentes.append(comentario)
+
+    def add_comentarios_autorizados(self, comentario):
+        self._comentarios_autorizados.append(comentario)
