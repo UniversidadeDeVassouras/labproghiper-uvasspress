@@ -1,0 +1,65 @@
+{% for post in administrador.get_todas_postagens() %}
+    <div>
+        <div class="container">
+        <div class="row">
+            <div class="col-12">
+            <h3 class="titulo">Autor: {{autor.get_nome()}}</h3>
+            </div>
+        </div>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+        <div class="row-page-title">
+            <div>
+                <h1 class="h5"> {{post.get_titulo()}}{{post.get_descricao()}}</h1>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="module">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8">
+            <div class="image-slider">
+                <video width="750" height="425" controls src="{{url_for('static', filename=post.get_imagem_d)}}"></video>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="descriptions">
+                <ul>
+                    <div id="div-da-curtida">
+                        <li>
+                            <h5>Curtidas: {{post.get_qtd_curtidas()}}</h5>
+                        </li>
+                    </div>
+                    <br>
+                    <li>
+                        <button onclick="curtir()" class="btn btn-green">Curtir</button>
+                    </li>
+                <hr>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <script>
+        function curtir(formElement){
+            console.log("curtir");
+            var formData = new FormData(formElement)
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('POST', "{{url_for('curtir', post_id = post.get_id())}}", true);
+            xmlhttp.onreadystatechange = function() {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById('div-da-curtida').innerHTML = xmlhttp.response;
+                    };
+                };
+            xmlhttp.send(formData);
+            console.log(xmlhttp.send())
+            return false;
+        }
+    </script>
+
+{% endfor %}
