@@ -1,9 +1,9 @@
-from application.model.entity.administrador import Administrador
+from application.model.entity.autor import Autor
 class UsuarioDAO:
     def __init__ (self):
         self._users  = []
          
-    def cadastrar_usuario (self, nome, nome_usuario, email, senha, confirmar_senha):
+    def cadastrar_usuario (self, nome, nome_usuario, email, senha, confirmar_senha, administrador):
         for autor in self._users:
             if autor.get_nome_usuario() == nome_usuario:
                 return "Nome de usuário em uso"
@@ -12,7 +12,7 @@ class UsuarioDAO:
                 return "Email Já Cadastrado"
 
         if senha == confirmar_senha:
-            autor = Administrador(nome, nome_usuario, email, senha)
+            autor = Autor(nome, nome_usuario, email, senha, administrador)
             self._users.append(autor)
             autor.set_id(len(self._users))
             return "Cadastro Efetuado"

@@ -1,9 +1,10 @@
-class Administrador:
-    def __init__(self, nome, nome_usuario, email, senha):
+class Autor:
+    def __init__(self, nome, nome_usuario, email, senha, administrador = False):
         self._nome = nome
         self._nome_usuario = nome_usuario
         self._email = email
         self._senha = senha
+        self._administrador = administrador
 
     def set_id(self, id):
         self._id = id
@@ -22,6 +23,3 @@ class Administrador:
 
     def get_password(self):
         return self._senha
-
-    def get_email(self):
-        return self._email

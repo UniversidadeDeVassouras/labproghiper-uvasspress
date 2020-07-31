@@ -9,7 +9,6 @@ def logado():
     email = request.form['login-email']
     senha = request.form['login-password']
     logar_usuario = usuario.logar_usuario(email,senha)
-    autor_list = usuario.exibir()
     if  logar_usuario == True:
         return render_template("logado.html")
     else:
@@ -24,8 +23,8 @@ def cadastro ():
     confirmar_senha = request.form['signup-password-confirm']
     nome = request.form['signup-nome']
     nome_usuario = request.form['signup-user-name']
-    cadastrar_usuario = usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha)
-    return render_template('mensagem.html', cadastrar_usuario = cadastrar_usuario)
+    usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha, administrador = True)
+    return render_template('criar_blog.html')
 
 @app.route('/login')
 def login_user():
@@ -36,3 +35,14 @@ def login_user():
         return render_template('cadastro.html')
     else:
         return render_template('login-1.html', check_user = check_user)
+
+@app.route('/logado/cadastro-autores', methods = ['POST'])
+def cadastro_autores():
+    usuario = current_app.config['usuario_dao'] 
+    email = request.form['signup-email']
+    senha = request.form['signup-password']
+    confirmar_senha = request.form['signup-password-confirm']
+    nome = request.form['signup-nome']
+    nome_usuario = request.form['signup-user-name']
+    usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha, administrador = False)
+    return render_template('dashboard.html')
