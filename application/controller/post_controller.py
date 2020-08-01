@@ -7,7 +7,16 @@ from application.model.entity.administrador import Administrador
 from application.model.dao.administradorDAO import administradorDAO
 from application.model.entity.comentario import Comentario
 from datetime import datetime
+from flask_mail import Mail, Message
 
+app.config['MAIL_SERVER']='exemplo.gmail.com' #email que vai enviar
+app.config['MAIL_PORT'] = 465 #porta do email se for gmail o padrão é 465, ainda mais por não estarmos utilizando TSL
+app.config['MAIL_USERNAME'] = 'Id_do@gmail.com' #Nome da conta de Email 
+app.config['MAIL_PASSWORD'] = '*****' #Senha
+app.config['MAIL_USE_TLS'] = False #Basicamente é um protocolo de segurança
+app.config['MAIL_USE_SSL'] = True #Outro protocolo de segurança
+
+mail = Mail(app)
 
 
 @app.route("/posts/<autor_id>/<post_id>")
@@ -38,5 +47,11 @@ def comentar():
     lista_pendentes = post.get_comentario_pendentes()
     return render_template('comentario.html', post = post, lista_pendentes = lista_pendentes)
 
-def 
+
     
+@app.route("/<post_id>/responder", methods=['POST'])
+def responder():
+    msg = Message('Olá', sender = 'sua_id@gmail.com', recipients = ['email_da_pessoa@gmail.com'])
+    msg.body = "Seu comentário foi respondido pelo autor..."
+    mail.send(msg)
+    return "E-mail Enviado!"
