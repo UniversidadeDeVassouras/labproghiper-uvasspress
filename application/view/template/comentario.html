@@ -1,25 +1,21 @@
 <section>
     <div class="container">
-        <div class="row-page-title">
-            <div class="page-title-captions">
-                <h1 class="h5">Comentários</h1>
-            </div>
+        <div>
+            <h1>Comentários</h1>
         </div>
     </div>
 </section>
 <div>
-    <ul id="comments-list" class="comments-list">
+    <ul>
         {% for comentario in post.get_comentario() %}
         <li>
-            <div class="comment-box">
-                <div class="comment-head">
-                    <h5 class="comment-name">
-                        <p>{{comentario.get_titulo()}}</p>
-                    </h5>
-                </div>
-                <div class="comment-content">
-                    {{comentario.get_conteudo()}}
-                </div>
+            <div>
+                <h5>
+                    <p>{{comentario.get_nome_comentarista()}}</p>
+                </h5>
+            </div>
+            <div>
+                {{comentario.get_conteudo()}}
             </div>
         </li>
         {% endfor %}
