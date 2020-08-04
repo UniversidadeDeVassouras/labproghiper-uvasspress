@@ -14,7 +14,11 @@ def alteracaosenha():
    recuperacaoSenha_dao = RecuperacaoSenhaDAO()
    autor_dao = AutorDAO()
    recuperacaoSenha = recuperacaoSenha_dao.buscar_por_token(recuperacaoSenha_token)
-   return render_template('alteracaoSenha.html', recuperacaoSenha = recuperacaoSenha)
+   if datetime.now() > RecuperacaoSenha().get_data_solicitacao():
+      return render_template("expirado.html")
+   else:
+      return render_template('alteracaoSenha.html', recuperacaoSenha = recuperacaoSenha)
+
 
 @app.route("/alteracaosenha/<recuperacaoSenha_token>/alterarsenha", methods=['POST'])
 def alterarSenha():
@@ -26,6 +30,6 @@ def alterarSenha():
    autor = recuperacaoSenha.get_autor()
    if nova_senha == repita_novaSenha:
       autor.set_senha(nova_senha)
-      return render_template('senhaAlterada.html', recuperacaoSenha = recuperacaoSenha, autor = autor), 201
+      return render_template('senhaalterada.html', recuperacaoSenha = recuperacaoSenha, autor = autor), 201
    else:
-      return render_template('senhasDiferentes.html', recuperacaoSenha = recuperacaoSenha, autor = autor)
+      return render_template('senhasdiferentes.html', recuperacaoSenha = recuperacaoSenha, autor = autor)

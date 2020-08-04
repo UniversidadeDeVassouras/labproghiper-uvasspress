@@ -13,7 +13,7 @@
           <li class="list-group-item"><h4>Informe sua nova senha</h4></li>
           </div>
           <li class="list-group-item">
-            <form enctype="multipart/form-data" action="{{url_for('alterarSenha')}}" method="POST" onsubmit="return submitForm(this);">
+            <form enctype="multipart/form-data" action="{{url_for('alterarSenha', recuperacaoSenha_token = recuperacaoSenha.get_token())}}" method="POST" onsubmit="return submitForm(this);">
               <div class="form-group">
                 <label for="InputNovaSenha">Nova Senha</label>
                 <input type="password" class="form-control" id="InputNovaSenha" placeholder="Senha" name="nova_senha">
