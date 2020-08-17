@@ -1,20 +1,25 @@
 class Autor:
-    def __init__(self, id, nome_completo, login, senha, email):
-        self._id = id
-        self._nome_completo = nome_completo
-        self._login = login
-        self._senha = senha
+    def __init__(self, nome, nome_usuario, email, senha, administrador = False):
+        self._nome = nome
+        self._nome_usuario = nome_usuario
         self._email = email
-        self._status = "ativo"
-        
+        self._senha = senha
+        self._administrador = administrador
+
+    def set_id(self, id):
+        self._id = id
+
+    def get_id(self):
+        return self._id
+
+    def get_nome(self):
+        return self._nome
+
+    def get_nome_usuario(self):
+        return self._nome_usuario
+
     def get_email(self):
         return self._email
-    
-    def set_senha(self, senha):
-        self._senha = senha
-    
-    def get_status(self):
-        return self._status
 
-    def set_status(self, status):
-        self._status = status
+    def get_password(self):
+        return self._senha
