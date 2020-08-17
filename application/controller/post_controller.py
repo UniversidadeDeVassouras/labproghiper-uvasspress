@@ -8,7 +8,16 @@ from application.model.dao.administradorDAO import administradorDAO
 from application.model.entity.comentario import Comentario
 from application.model.entity.resposta import Resposta
 from datetime import datetime
+from flask_mail import Mail, Message
 
+app.config['MAIL_SERVER']='exemplo.gmail.com' #email que vai enviar
+app.config['MAIL_PORT'] = 465 #porta do email se for gmail o padrão é 465, ainda mais por não estarmos utilizando TSL
+app.config['MAIL_USERNAME'] = 'Id_do@gmail.com' #Nome da conta de Email 
+app.config['MAIL_PASSWORD'] = '*****' #Senha
+app.config['MAIL_USE_TLS'] = False #Basicamente é um protocolo de segurança
+app.config['MAIL_USE_SSL'] = True #Outro protocolo de segurança
+
+mail = Mail(app)
 
 
 @app.route("/posts/<autor_id>/<post_id>")
@@ -48,5 +57,3 @@ def responder():
     data_resposta = datetime.today()
     resposta = Resposta(conteudo_reposta, data_resposta, nome_autor)
     return render_template('comentario.html', post = post, resposta = resposta, data_resposta = data_resposta)
-
-    
