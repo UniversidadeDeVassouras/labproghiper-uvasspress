@@ -1,0 +1,23 @@
+<section>
+    <div class="container">
+        <div>
+            <h1>Comentários</h1>
+        </div>
+    </div>
+</section>
+<div>
+    <ul>
+        {% for comentario in post.get_comentario() %}
+        <li>
+            <div>
+                <h5>
+                    <p>{{comentario.get_nome_comentarista()}}</p>
+                </h5>
+            </div>
+            <div>
+                {{comentario.get_conteudo()}}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

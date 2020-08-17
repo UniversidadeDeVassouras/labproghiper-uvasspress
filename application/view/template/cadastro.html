@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+f<!DOCTYPE html>
 <html lang="pt-br">
 
 <body>
@@ -55,7 +55,7 @@
                     <label for="password" class="float-label">Confirmar Senha</label>
                 </div>
                 <div>
-                    <button class="btn btn-block btn-info ripple-effect" id="cadastrou" type="submit" name="Submit" alt="sign in">Cadastrar</button>
+                    <button class="btn btn-block btn-info ripple-effect" id="cadastrou" type="submit" name="Submit" alt="sign in" onclick="alertCreate()">Cadastrar</button>
                 </div>
             </form>
         </div>
@@ -80,6 +80,15 @@
             };
             xhr.send(formData);
             return false;
+        }
+    </script>
+    <script>
+        function alertCreate() {
+            Swal.fire(
+                'Sucesso',
+                'Seu blog foi criado, agora é só configurar',
+                'success'
+            )
         }
     </script>
 

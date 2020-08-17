@@ -25,7 +25,15 @@ def cadastro ():
     nome = request.form['signup-nome']
     nome_usuario = request.form['signup-user-name']
     cadastrar_usuario = usuario.cadastrar_usuario(nome, nome_usuario, email, senha, confirmar_senha)
-    return render_template('mensagem.html', cadastrar_usuario = cadastrar_usuario)
+    return render_template('criar_blog.html')
+
+@app.route('/login/cadastro-blog', methods = ['POST'])
+def cadastro_blog():
+    usuario = current_app.config['usuario_dao']
+    blog = current_app.config['blog_dao']
+    nome = request.form['blog-name']
+    cadastrar_blog = blog.criar_blog(nome)
+    return render_template('dashboard.html')
 
 @app.route('/login')
 def login_user():

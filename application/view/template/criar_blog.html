@@ -1,12 +1,18 @@
-<form enctype="multipart/form-data" action="{{url_for('criar_blog')}}" method="POST">
-    
+<form enctype="multipart/form-data" action="{{url_for('cadastro_blog')}}" method="POST">
     <div class="form-group">
         <label for="inputNome">Titulo: </label>
-        <input type="text" class="form-control" id="inputNome" name="nome">
-        <label for="inputNome">Autor: </label>
-        <input type="text" class="form-control" id="inputNome" name="autor">
-        <label for="inputNome">Categoria: </label>
-        <input type="text" class="form-control" id="inputNome" name="categoria">
+        <input type="text" class="form-control" id="inputNome" name="blog-name">
     </div>
-    <button type="submit" class="btn btn-green">Criar Blog</button>
+    <button type="submit" class="btn btn-green" onclick="alertCreate()">Criar Blog</button>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script>
+    function alertCreate() {
+        Swal.fire(
+            'Sucesso',
+            'Seu blog foi criado, agora é só configurar',
+            'success'
+        )
+    }
+</script>
