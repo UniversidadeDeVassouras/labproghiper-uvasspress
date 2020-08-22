@@ -1,0 +1,122 @@
+{% for post in administrador.get_todas_postagens() %}
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="titulo">Autor: {{autor.get_nome()}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container">
+        <div class="row-page-title">
+            <div>
+                <h1 class="h5"> {{post.get_titulo()}}{{post.get_descricao()}}</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="module">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div>
+                    <video width="750" height="425" controls src="{{url_for('static', filename=post.get_imagem_d)}}"></video>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div>
+                    <ul>
+                        <div id="div_da_curtida">
+                            <li>
+                                <h5>Curtidas: {{post.get_qtd_curtidas()}}</h5>
+                            </li>
+                        </div>
+                        <br>
+                        <li>
+                            <button onclick="curtir()">Curtir</button>
+                        </li>
+                        <hr>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="area_do_comentario">
+    <section>
+        <div class="container">
+            <div>
+                <h1>Comentários</h1>
+            </div>
+        </div>
+    </section>
+    <br> {% for comentario in post.get_comentario() %}
+    <div>
+        <ul>
+            <li>
+                <div>
+                    <h5>
+                        <p>{{comentario.get_nome_comentarista()}}</p>
+                    </h5>
+                </div>
+                <div>
+                    {{comentario.get_conteudo()}}
+                </div>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    function curtir(formElement) {
+        console.log("curtir");
+        var formData = new FormData(formElement)
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open('POST', "{{url_for('curtir', post_id = post.get_id())}}", true);
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById('div_da_curtida').innerHTML = xmlhttp.response;
+            };
+        };
+        xmlhttp.send(formData);
+        console.log(xmlhttp.send())
+        return false;
+    }
+</script>
+
+<script>
+    function comentar(formElment) {
+        console.log("comentar")
+        var formData = new FormData(formElement)
+        var xmlhttp = new XMLHttpRequest();
+        xhr.open(formElement.method, formElement.action);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('area_do_comentario').innerHTML = xhr.response;
+            };
+        };
+        xhr.send(formData);
+        return false;
+    }
+</script>
+
+<script>
+    function responder(formElment) {
+        console.log("responder")
+        var formData = new FormData(formElement)
+        var xmlhttp = new XMLHttpRequest();
+        xhr.open(formElement.method, formElement.action);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('area_da_resposta').innerHTML = xhr.response;
+            };
+        };
+        xhr.send(formData);
+        return false;
+    }
+</script>
+
+{% endfor %}

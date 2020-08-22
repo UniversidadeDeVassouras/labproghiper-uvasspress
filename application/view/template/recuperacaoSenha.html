@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recuperação de Senha</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <br>
+  <div class="mx-auto" style="width: 500px;">
+  <ul class="list-group">
+    <div class="text-center" id="campo-email">
+    <li class="list-group-item"><h4>Informe seu Email</h4></li>
+    </div>
+    <li class="list-group-item">
+      <form>
+      <div class="form-group" enctype="multipart/form-data" action="{{url_for('enviarlink')}}" method="POST" onsubmit="return submitForm(this);">
+        <label for="InputEmail">Endereço de email</label>
+        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Seu email" name="email">
+        <small id="emailHelp" class="form-text text-muted">Será enviado para este Email um link para recuperação de senha.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar link</button>
+      </form>
+    </li>
+  </ul>
+  </div>
+  <script>
+    function submitForm(formElement){
+      var formData = new FormData(formElement);
+      var xhr = new XMLHttpRequest();
+      xhr.open(formElement.method, formElement.action);
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState == 4 && xhr.status == 201) {
+          document.getElementById('campo-email').innerHTML = xhr.response;
+          };
+        };
+      xhr.send(formData);
+      return false;
+    }
+  </script>
+  <script src="{{url_for('static', filename = 'js/jquery-3.5.1.min.js')}}"></script>
+  <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+</body>
+</html>

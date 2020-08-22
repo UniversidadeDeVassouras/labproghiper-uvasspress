@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alteração de Senha</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/bootstrap.min.css')}}">
+</head>
+<body>
+    <div class="mx-auto" style="width: 500px;">
+        <ul class="list-group">
+          <div class="text-center">
+          <li class="list-group-item"><h4>Informe sua nova senha</h4></li>
+          </div>
+          <li class="list-group-item">
+            <form enctype="multipart/form-data" action="{{url_for('alterarSenha', recuperacaoSenha_token = recuperacaoSenha.get_token())}}" method="POST" onsubmit="return submitForm(this);">
+              <div class="form-group">
+                <label for="InputNovaSenha">Nova Senha</label>
+                <input type="password" class="form-control" id="InputNovaSenha" placeholder="Senha" name="nova_senha">
+              </div>
+              <div class="form-group">
+                <label for="repitaNovaSenha">Repita a Senha</label>
+                <input type="password" class="form-control" id="repitaNovaSenha" placeholder="Senha" name="repita_novaSenha">
+              </div>
+              <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+          </li>
+          <li class="list-group-item" id='campo-senha'>
+          </li>
+        </ul>
+    </div>
+    <script>
+      function submitForm(formElement){
+        var formData = new FormData(formElement);
+        var xhr = new XMLHttpRequest();
+        xhr.open(formElement.method, formElement.action);
+        xhr.onreadystatechange = function() {
+          if(xhr.readyState == 4 && xhr.status == 201) {
+            document.getElementById('campo-senha').innerHTML = xhr.response;
+            };
+          };
+        xhr.send(formData);
+        return false;
+      }
+    </script>  
+    <script src="{{url_for('static', filename = 'js/jquery-3.5.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/bootstrap.min.js')}}"></script>
+</body>
+</html>
