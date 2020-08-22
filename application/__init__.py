@@ -31,8 +31,6 @@ listaAutores = []
 from application.controller import alteracaoSenha_controller
 from application.controller import recuperacaoSenha_controller
 from application.controller import login_controller
-from application.controller import a_controller
-from application.controller import blog_controller
 from application.controller import feed_controller
 
 autor1 = Autor(1, "Pedro Silva", "PedroSilva", 12345, "pedro.q2000@outlook.com")
@@ -47,7 +45,4 @@ listaAutores.append(autor2)
 recuperacaoList.append(recuperacao1)
 
 from application.controller import index_controller
-from application.controller import recuperacaoSenha_controller
-from application.controller import alteracaoSenha_controller
-
 from application.controller import post_controller

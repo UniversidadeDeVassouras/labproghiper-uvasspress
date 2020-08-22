@@ -4,7 +4,6 @@ import os
 from application.model.entity.post import Post
 from application.model.dao.post_DAO import PostDAO
 from application.model.entity.administrador import Administrador
-from application.model.dao.administradorDAO import administradorDAO
 from application.model.entity.comentario import Comentario
 from application.model.entity.resposta import Resposta
 from datetime import datetime
