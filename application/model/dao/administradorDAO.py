@@ -1,6 +1,5 @@
 from flask import Flask
 from application.model.entity.administrador import Administrador
-from application import todas_postagens
 from application import listaAdministradores
 
 class AdministradorDAO:
