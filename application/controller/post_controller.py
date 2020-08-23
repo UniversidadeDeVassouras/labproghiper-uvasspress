@@ -1,3 +1,5 @@
+from flask import Flask, render_template
+import os
 from application.model.entity.post import Post
 from application.model.dao.post_DAO import PostDAO
 from application.model.entity.administrador  import Administrador

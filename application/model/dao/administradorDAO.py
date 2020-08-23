@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, render_template
+import os
 from application.model.entity.administrador import Administrador
 from application import todas_postagens
 from application import listaAdministradores

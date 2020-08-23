@@ -1,8 +1,6 @@
 from application import app
 from flask import render_template, request, current_app
 import os
-
-
 @app.route('/logado', methods = ['POST'])
 def logado():
     usuario = current_app.config['usuario_dao']
