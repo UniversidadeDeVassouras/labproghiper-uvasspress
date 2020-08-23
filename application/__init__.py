@@ -19,20 +19,17 @@ from application.model.entity.blog import Blog
 from application.model.entity.recuperacaoSenha import RecuperacaoSenha
 app = Flask(__name__, static_folder=os.path.abspath("application/view/static"), template_folder=os.path.abspath("application/view/template"))
 usuario_dao = UsuarioDAO()
-app.config["usuario_dao"] = usuario_dao	app.config["usuario_dao"] = usuario_dao
+app.config["usuario_dao"] = usuario_dao	
 from application.controller import recuperacaoSenha_controller
 from application.controller import login_controller
-from application.controller import a_controller	
+from application.controller import index_controller	
 from application.controller import feed_controller
 
 
-autor1 = Autor(1, "Pedro Silva", "PedroSilva", 12345, "pedro.q2000@outlook.com")	autor1 = Autor(1, "Pedro Silva", "PedroSilva", 12345, "pedro.q2000@outlook.com")
-@@ -46,7 +51,7 @@
-listaAutores.append(autor2)	listaAutores.append(autor2)
-recuperacaoList.append(recuperacao1)	recuperacaoList.append(recuperacao1)
+autor1 = Autor(1, "Pedro Silva", "PedroSilva", 12345, "pedro.q2000@outlook.com")
+listaAutores.append(autor2)
+recuperacaoList.append(recuperacao1)
 
-
-from application.controller import index_controller
 from application.controller import recuperacaoSenha_controller
 from application.controller import alteracaoSenha_controller
 
