@@ -27,6 +27,9 @@ class AutorDAO:
     def ativarAutor(self, autor):
         autor.set_status("ativo")
 
+    
+    
+
 
 
 

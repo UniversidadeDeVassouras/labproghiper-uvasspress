@@ -23,3 +23,8 @@ class Autor:
 
     def get_password(self):
         return self._senha
+
+    def verificarAtividade(self, autor):
+        if(autor.get_status() == "ativo"):
+            return True
+        return False
