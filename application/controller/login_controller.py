@@ -8,7 +8,10 @@ def logado():
     usuario = current_app.config['usuario_dao']
     email = request.form['login-email']
     senha = request.form['login-password']
-    logar_usuario = usuario.logar_usuario(email,senha)
+    verificar_usuario = usuario.verificarAtividade()
+    if(verificar_usuario):
+        logar_usuario = usuario.logar_usuario(email,senha)
+    
     if  logar_usuario == True:
         return render_template("logado.html")
     else:
